@@ -9,6 +9,7 @@ var addTask = function(event)
 {
     var source = $(event.explicitOriginalTarget).closest('li');
     addTaskTo(source);
+    source.find('+ li').find('input.description').select();
 }
 
 var isNumber = function(candidate)
