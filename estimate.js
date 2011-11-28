@@ -119,7 +119,9 @@ var init = function()
     $('input.worst').bind('keydown', function(event){
         if(event.keyCode==9 && event.target == this && !event.shiftKey)
         {
-            addTaskTo($(this).closest('li'));
+            var source = $(this).closest('li');
+            addTaskTo(source);
+            source.find('+ li').find('input:first').select();
         }});
 
     $('.tasks ul li input:first').select();
