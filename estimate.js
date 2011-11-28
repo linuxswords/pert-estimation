@@ -1,5 +1,15 @@
 var totsignature = '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>';
 var signature = ' (&#956;/&#963;)';
+var addTaskTo = function(row)
+{
+    var task = $('.cloner > li').clone(true);
+    task.insertAfter(row);
+}
+var addTask = function(event)
+{
+    var source = $(event.explicitOriginalTarget).closest('li');
+    addTaskTo(source);
+}
 
 var isNumber = function(candidate)
 {
@@ -79,8 +89,7 @@ var init = function()
     $('img.add').live('click',function(event)
             {
                 event.stopImmediatePropagation();
-                var task = $('.cloner > li').clone(true);
-                task.insertAfter( $(this).closest('li'));
+                addTaskTo($(this).closest('li'));
             });
     $('img.delete').live('click',function()
             {
@@ -113,6 +122,6 @@ var init = function()
                 $('.explanation').slideToggle('slow');
             });
 
-    shortcut.add('Alt+Ctrl+B', function(){console.log('pressed key')});
+    shortcut.add('Shift+enter', function(event){console.log('pressed key');addTask(event)});
     $('.tasks ul li input:first').select();
 }// end init
