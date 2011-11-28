@@ -116,6 +116,13 @@ var init = function()
                 event.stopImmediatePropagation();
                 popOutCSV();
             });
+    $('input.worst').bind('keydown', function(event){
+        if(event.keyCode==9 && event.target == this && !event.shiftKey)
+        {
+            addTaskTo($(this).closest('li'));
+        }});
+
+    $('.tasks ul li input:first').select();
 
     $('.catcher').click(
             function()
