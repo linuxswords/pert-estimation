@@ -1,12 +1,12 @@
 var totsignature = '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>';
 var signature = ' (&#956;/&#963;)';
 
-isNumber = function(candidate)
+var isNumber = function(candidate)
 {
     return !isNaN(parseInt(candidate));
 }
 
-popOutCSV = function()
+var popOutCSV = function()
 {
     var header = 'description,O,N,P,duration,deviation\n';
     var data = header;
@@ -25,7 +25,7 @@ popOutCSV = function()
     window.location='data:text/csv;charset=utf8,' + encodeURIComponent(data);
 }
 
-updateNumbers = function()
+var updateNumbers = function()
 {
     var mu_tot = 0;
     var sigma_tot = 0;
@@ -54,7 +54,7 @@ updateNumbers = function()
     $('.summary').empty().append($('<span class="totsum">' + totsignature + '<br />' + mu_tot.toFixed(2) + '/' + Math.sqrt(sigma_tot).toFixed(2) + '</span>'));
 }
 
-validate = function(input)
+var validate = function(input)
 {
     if(isNumber(input.val()))
     {
@@ -66,7 +66,7 @@ validate = function(input)
     }
 }
 
-init = function()
+var init = function()
 {
     $('input').live('click',function(){
         $(this).select();
