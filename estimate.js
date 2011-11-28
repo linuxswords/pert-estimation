@@ -123,6 +123,6 @@ var init = function()
                 $('.explanation').slideToggle('slow');
             });
 
-    shortcut.add('Shift+enter', function(event){console.log('pressed key');addTask(event)});
+    shortcut.add('Shift+enter', function(event){addTask(event)});
     $('.tasks ul li input:first').select();
 }// end init
