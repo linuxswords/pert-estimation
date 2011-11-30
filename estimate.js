@@ -1,9 +1,11 @@
 var totsignature = '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>';
 var signature = ' (&#956;/&#963;)';
+var taskcounter = 2;
 var addTaskTo = function(row)
 {
     var task = $('.cloner > li.task').clone(true);
     task.insertAfter(row);
+    task.children('input:text').val('task ' + (taskcounter++));
 }
 var addTask = function(event)
 {
