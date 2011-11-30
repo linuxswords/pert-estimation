@@ -115,7 +115,6 @@ var init = function()
     $('img.download').click(
             function(event)
             {
-                event.stopImmediatePropagation();
                 popOutCSV();
             });
     $('input').bind('keydown', function(event){
