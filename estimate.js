@@ -62,7 +62,9 @@ var updateNumbers = function()
                     sigma_tot += sigma * sigma;
                 }
            });
-    $('.summary').empty().append($('<span class="totsum">' + totsignature + '<br />' + mu_tot.toFixed(2) + '/' + Math.sqrt(sigma_tot).toFixed(2) + '</span>'));
+    $('.summary').empty().append($('<span class="totsum">' + 
+                totsignature + '<br />' + mu_tot.toFixed(2) + 
+                '/' + Math.sqrt(sigma_tot).toFixed(2) + '</span>'));
 }
 
 var validate = function(input)
