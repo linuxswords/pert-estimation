@@ -2,14 +2,14 @@ var totsignature = '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>';
 var signature = ' (&#956;/&#963;)';
 var addTaskTo = function(row)
 {
-    var task = $('.cloner > li').clone(true);
+    var task = $('.cloner > li.task').clone(true);
     task.insertAfter(row);
 }
 var addTask = function(event)
 {
     var source = $(event.explicitOriginalTarget).closest('li');
     addTaskTo(source);
-    source.find('+ li').find('input.description').select();
+    source.next('li.task').find('input.description').select();
 }
 
 var isNumber = function(candidate)
@@ -21,7 +21,7 @@ var popOutCSV = function()
 {
     var header = 'description,O,N,P,duration,deviation\n';
     var data = header;
-    $('.tasks ul li').each(
+    $('.tasks ul li.task').each(
             function()
             {
                 $(this).find('input').each(function(){
@@ -44,7 +44,7 @@ var updateNumbers = function()
         validate($(this));
         });
 
-    $('.tasks > ul > li').each(
+    $('.tasks ul li.task').each(
            function(){
                var opt = $(this).children('input.optimus').val();
                var norm = $(this).children('input.nominal').val();
@@ -96,7 +96,7 @@ var init = function()
             });
     $('img.delete').live('click',function()
             {
-                if($('.tasks ul li').size() > 1)
+                if($('.tasks ul li.task').size() > 1)
                 {
                     $(this).closest('li').remove();
                     updateNumbers();
@@ -105,11 +105,11 @@ var init = function()
 
     $('img.clear').click(
             function(){
-                $('.tasks ul li').slice(1).remove();
-                $('.tasks ul li input.optimus').removeClass('error').val('O');
-                $('.tasks ul li input.nominal').removeClass('error').val('N');
-                $('.tasks ul li input.worst').removeClass('error').val('P');
-                $('.tasks ul li input.description').val('description');
+                $('.tasks ul li.task').slice(1).remove();
+                $('.tasks ul li.task input.optimus').removeClass('error').val('O');
+                $('.tasks ul li.task input.nominal').removeClass('error').val('N');
+                $('.tasks ul li.task input.worst').removeClass('error').val('P');
+                $('.tasks ul li.task input.description').val('description');
             });
 
     $('img.download').click(
@@ -125,7 +125,7 @@ var init = function()
             source.find('+ li').find('input:first').select();
         }});
 
-    $('.tasks ul li input:first').select();
+    $('.tasks ul li.task input:first').select();
 
     $('.catcher').click(
             function()
@@ -133,5 +133,5 @@ var init = function()
                 $('.explanation').slideToggle('slow');
             });
 
-    $('.tasks ul li input:first').select();
+    $('.tasks ul li.task input:first').select();
 }// end init

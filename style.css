@@ -9,7 +9,15 @@ input.worst
 {
     width: 40px;
 }
-
+span.O
+{
+    margin-left:220px;
+}
+span.N,
+span.P
+{
+    padding-left: 25px;
+}
 div.right,
 div.left
 {
