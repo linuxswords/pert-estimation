@@ -118,8 +118,8 @@ var init = function()
                 event.stopImmediatePropagation();
                 popOutCSV();
             });
-    $('input.worst').bind('keydown', function(event){
-        if(event.keyCode==9 && event.target == this && !event.shiftKey)
+    $('input').bind('keydown', function(event){
+        if(event.keyCode==13 && event.target == this && event.shiftKey)
         {
             var source = $(this).closest('li');
             addTaskTo(source);
@@ -134,6 +134,5 @@ var init = function()
                 $('.explanation').slideToggle('slow');
             });
 
-    shortcut.add('Shift+enter', function(event){addTask(event)});
     $('.tasks ul li input:first').select();
 }// end init
