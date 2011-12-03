@@ -3,6 +3,14 @@
     margin: 0;
     padding: 0;
 }
+input
+{
+    border: 0px;
+}
+input.description
+{
+    width: 170px;
+}
 input.optimus,
 input.nominal,
 input.worst
@@ -11,7 +19,8 @@ input.worst
 }
 span.O
 {
-    margin-left:220px;
+    /* 170 + 2*3 + 2 * 16 + 20 + 2*3  */
+    margin-left:231px;
 }
 span.N,
 span.P
