@@ -108,10 +108,11 @@ var init = function()
     $('img.clear').click(
             function(){
                 $('.tasks ul li.task').slice(1).remove();
-                $('.tasks ul li.task input.optimus').removeClass('error').val('O');
-                $('.tasks ul li.task input.nominal').removeClass('error').val('N');
-                $('.tasks ul li.task input.worst').removeClass('error').val('P');
+                $('.tasks ul li.task input.optimus').removeClass('error').val('1');
+                $('.tasks ul li.task input.nominal').removeClass('error').val('2');
+                $('.tasks ul li.task input.worst').removeClass('error').val('3');
                 $('.tasks ul li.task input.description').val('description');
+                $('input:first').select();
             });
 
     $('img.download').click(
