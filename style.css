@@ -17,15 +17,23 @@ input.worst
 {
     width: 40px;
 }
+div.newtask
+{
+    text-align: center;
+}
+div.newtask,
+ul li.header
+{
+    font-size: 11px;
+}
 span.O
 {
-    /* 170 + 2*3 + 2 * 16 + 20 + 2*3  */
     margin-left:231px;
 }
 span.N,
 span.P
 {
-    padding-left: 25px;
+    padding-left: 30px;
 }
 div.right,
 div.left
