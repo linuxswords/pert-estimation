@@ -137,4 +137,5 @@ var init = function()
             });
 
     $('.tasks ul li.task input:first').select();
+    $('[title]').tooltip();
 }// end init
