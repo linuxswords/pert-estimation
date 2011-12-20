@@ -6,18 +6,18 @@ var addTaskTo = function(row)
     var task = $('.cloner > li.task').clone(true);
     task.insertAfter(row);
     task.children('input:text').val('task ' + (taskcounter++));
-}
+};
 var addTask = function(event)
 {
-    var source = $(event.explicitOriginalTarget).closest('li');
+    var source = $(event.target).closest('li');
     addTaskTo(source);
     source.next('li.task').find('input.description').select();
-}
+};
 
 var isNumber = function(candidate)
 {
     return !isNaN(parseInt(candidate));
-}
+};
 
 var popOutCSV = function()
 {
@@ -36,7 +36,7 @@ var popOutCSV = function()
                 data += '\n';
             });
     window.location='data:text/csv;charset=utf8,' + encodeURIComponent(data);
-}
+};
 
 var updateNumbers = function()
 {
@@ -67,7 +67,8 @@ var updateNumbers = function()
     $('.summary').empty().append($('<span class="totsum">' + 
                 totsignature + '<br />' + mu_tot.toFixed(2) + 
                 '/' + Math.sqrt(sigma_tot).toFixed(2) + '</span>'));
-}
+};
+
 
 var validate = function(input)
 {
@@ -79,7 +80,7 @@ var validate = function(input)
     {
         input.addClass('error');
     }
-}
+};
 
 var init = function()
 {
@@ -126,7 +127,33 @@ var init = function()
             var source = $(this).closest('li');
             addTaskTo(source);
             source.find('+ li').find('input:first').select();
-        }});
+        }
+        // arrow down
+        if(event.keyCode==40)
+        {
+            // if we are on the last row
+            if($(this).closest('li').index() == $("div.tasks li.task:last").index())
+            {
+                addTask(event);
+            }
+            // else navigate down
+            else
+            {
+                var inputIndex = $(this).closest('li.task').find('input').index($(this))
+                $(this).closest('li').next('li.task').find('input').eq(inputIndex).select();
+            }
+        }
+        // arrow up
+        if(event.keyCode==38)
+        {
+            // case new row
+            // case navigate down
+            var inputIndex = $(this).closest('li.task').find('input').index($(this))
+            $(this).closest('li').prev('li.task').find('input').eq(inputIndex).select();
+        }
+
+
+    });
 
     $('.tasks ul li.task input:first').select();
 
@@ -138,4 +165,4 @@ var init = function()
 
     $('.tasks ul li.task input:first').select();
     $('[title]').tooltip();
-}// end init
+};// end init
