@@ -1,12 +1,25 @@
 var totsignature = '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>';
 var signature = ' (&#956;/&#963;)';
-var taskcounter = 2;
+var taskcounter = 1;
+var localStorageKey = 'estimate-data';
 var addTaskTo = function(row)
 {
-    var task = $('.cloner > li.task').clone(true);
-    task.insertAfter(row);
-    task.children('input:text').val('task ' + (taskcounter++));
+    var $task = $('.cloner > li.task').clone(true);
+    var number = taskcounter++;
+    $task.find('input').each(function(i, elem){
+        var name = $(elem).attr('name');
+        $(elem).attr('name', name.replace('-x', '-' + number));
+    });
+    row = row || $('form').find('li:last');
+    $task.insertAfter(row);
+    $task.children('input:text').val('task ' + (number));
+    storeTaskCounter();
 };
+
+var storeTaskCounter = function(){
+    console.log(taskcounter);
+    localStorage.setItem(localStorageKey,taskcounter);
+}
 var addTask = function(event)
 {
     var source = $(event.target).closest('li');
@@ -102,6 +115,8 @@ var init = function()
                 if($('.tasks ul li.task').size() > 1)
                 {
                     $(this).closest('li').remove();
+                    taskcounter--;
+                    storeTaskCounter(taskcounter);
                     updateNumbers();
                 }
             });
@@ -151,8 +166,6 @@ var init = function()
             var inputIndex = $(this).closest('li.task').find('input').index($(this))
             $(this).closest('li').prev('li.task').find('input').eq(inputIndex).select();
         }
-
-
     });
 
     $('.tasks ul li.task input:first').select();
@@ -165,4 +178,20 @@ var init = function()
 
     $('.tasks ul li.task input:first').select();
     $('[title]').tooltip();
-};// end init
+
+
+
+    $('form').sisyphus({
+        onBeforeRestore: restoreDynamicRows
+    });
+
+}// end init
+
+function restoreDynamicRows(){
+    var numberOfRows = localStorage.getItem(localStorageKey);
+    if(numberOfRows > 1){
+        for(var i = 2; i <= numberOfRows; i++){
+            addTaskTo();
+        }
+    }
+}
