@@ -19,7 +19,7 @@ var Estimate =  {
     },
 
     storeTaskCounter : function() {
-        console.log(Estimate.taskcounter);
+//        console.log(Estimate.taskcounter);
         localStorage.setItem(Estimate.localStorageKey, '' + Estimate.taskcounter);
     },
 
@@ -65,7 +65,7 @@ var Estimate =  {
                     var mu = (parseFloat(opt) + 4 * parseFloat(norm) + parseFloat(worst)) / 6.0;
                     var sigma = (parseFloat(worst) - parseFloat(opt)) / 6.0;
                     $(this).find('.sum').remove();
-                    $('<span class="sum">' + signature +
+                    $('<span class="sum">' + Estimate.signature +
                         ' <span class="mu">' + mu.toFixed(2) +
                         '</span>/<span class="sigma">' + sigma.toFixed(2) +
                         '</span></span>').insertAfter($(this).find('input.worst'));
