@@ -1,3 +1,9 @@
+/**
+ * PERT project estimation.
+ *
+ * https://github.com/linuxswords/pert-estimation
+ *
+ */
 var Estimate =  {
 
     totsignature : '&#956;<sub>tot</sub>/&#963;<sub>tot</sub>',
