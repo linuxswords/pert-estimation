@@ -21,6 +21,7 @@ Just download it and point your browser to the index.html file.
 ## TODO and Wishlist
 
 * Reordering of task via keyboard or/and drag and drop.
+* uploading a csv file
 
 ## License
 
