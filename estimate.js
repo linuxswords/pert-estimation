@@ -20,7 +20,7 @@ var Estimate =  {
         });
         row = row || $('form').find('li:last');
         $task.insertAfter(row);
-        $task.children('input:text').val('task ' + (number));
+        $task.children('input:text').val('');
         Estimate.storeTaskCounter();
     },
 
@@ -118,9 +118,9 @@ var Estimate =  {
         $('img.clear').click(
             function () {
                 $('.tasks ul li.task').slice(1).remove();
-                $('.tasks ul li.task input.optimus').removeClass('error').val('1');
-                $('.tasks ul li.task input.nominal').removeClass('error').val('2');
-                $('.tasks ul li.task input.worst').removeClass('error').val('3');
+                $('.tasks ul li.task input.optimus').removeClass('error').val('0');
+                $('.tasks ul li.task input.nominal').removeClass('error').val('0');
+                $('.tasks ul li.task input.worst').removeClass('error').val('0');
                 $('.tasks ul li.task input.description').val('description');
                 $('input:first').select();
                 Estimate.taskcounter = 1;
