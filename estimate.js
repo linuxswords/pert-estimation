@@ -40,7 +40,9 @@ var Estimate =  {
     },
 
     popOutCSV : function() {
-        var data =  'description,O,N,P,duration,deviation\n';
+        var title = $('input.title').val() || 'no title';
+
+        var data =  title + '\ndescription,O,N,P,duration,deviation\n';
         $('.tasks ul li.task').each(
             function () {
                 $(this).find('input').each(function () {
