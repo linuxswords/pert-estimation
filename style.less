@@ -15,7 +15,11 @@
 }
 input {
   border:0px;
+  
 }
+input.title{
+    width: 300px;
+  }
 input.description {
   width: @description-width*1px;
 }
@@ -44,10 +48,10 @@ div.right, div.left {
   float:left;
 }
 div.content {
-  width:70%;
+  min-width: 600px;
   float:left;
   margin-top:20px;
-  .rounded-corners(10px);
+  .rounded-corners(20px);
 }
 div.summary {
   color:orange;
@@ -64,6 +68,9 @@ div.summary {
   div.tasks {
     margin-top:10px;
     padding-left:20px;
+    .sum {
+      padding: 0 10px 0 10px;
+    }
   }
   h1 {
     margin-top:10px;
